@@ -1,0 +1,130 @@
+﻿@model ControleMesalidadeCTTAPlayGround.Models.AssociadoModel
+
+@{
+    ViewData["Title"] = "Detalhes do Sócio";
+}
+
+<h2>Detalhes de @Model.Nome</h2>
+<p><strong>Status:</strong> @(Model.EstaAdimplente() ? "Adimplente" : "Inadimplente")</p>
+<p><strong>Vencimento Atual:</strong> @Model.ObterVencimentoAtual()?.ToString("dd/MM/yyyy")</p>
+<p><strong>Dias Restantes:</strong> @Model.DiasRestantes()</p>
+
+<h4>Histórico de Pagamentos</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Data do Pagamento</th>
+            <th>Valor</th>
+            <th>Período de Adimplência</th>
+            <th>Vencimento Calculado</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            DateTime? vencimento = null;
+            foreach (var p in Model.Pagamentos.OrderBy(p => p.DataPagamento))
+            {
+                var calculado = p.CalcularVencimento(vencimento);
+                vencimento = calculado;
+                <tr>
+                    <td>@p.DataPagamento.ToString("dd/MM/yyyy")</td>
+                    <td>R$ @p.Valor.ToString("F2")</td>
+                    <td>@p.DiasAdimplencia dias</td>
+                    <td>@calculado.ToString("dd/MM/yyyy")</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<a asp-action="Index" class="btn btn-secondary">Voltar</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@* @{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>AssociadoModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Documento)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Documento)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Telefone)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Telefone)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Endereco)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Endereco)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DataAniversario)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DataAniversario)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Categoria)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Categoria)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Equipamento)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Equipamento)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Necessidade)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Necessidade)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ativo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ativo)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+ *@
