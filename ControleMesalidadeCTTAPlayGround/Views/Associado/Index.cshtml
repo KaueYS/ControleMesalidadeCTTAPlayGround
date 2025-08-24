@@ -102,9 +102,11 @@
                     <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-primary">Historico de pagamentos</a>
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
                     
-                    <a asp-action="Delete" asp-route-id="@item.Id">Deletar</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id">Deletar</a> |
+
+                    <a asp-action="DetalhesAssociado" asp-route-id="@item.Id">Dados do Socio</a>
                 </td>
             </tr>
         }

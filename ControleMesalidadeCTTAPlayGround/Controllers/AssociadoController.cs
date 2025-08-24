@@ -37,23 +37,24 @@ namespace ControleMesalidadeCTTAPlayGround.Controllers
         }
 
 
-        // GET: Associado/Details/5
-        //public async Task<IActionResult> Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
 
-        //    var associadoModel = await _context.Associados
-        //        .FirstOrDefaultAsync(m => m.Id == id);
-        //    if (associadoModel == null)
-        //    {
-        //        return NotFound();
-        //    }
+        //GET: Associado/Details/5
+        public async Task<IActionResult> DetalhesAssociado(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-        //    return View(associadoModel);
-        //}
+            var associadoModel = await _context.Associados
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (associadoModel == null)
+            {
+                return NotFound();
+            }
+
+            return View(associadoModel);
+        }
 
         // GET: Associado/Create
         public IActionResult Create()
