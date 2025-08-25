@@ -72,6 +72,7 @@ namespace ControleMesalidadeCTTAPlayGround.Controllers
             if (ModelState.IsValid)
             {
                 associadoModel.Ativo = true;
+                associadoModel.Nome = associadoModel.Nome.ToUpper().Trim();
                 _context.Add(associadoModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

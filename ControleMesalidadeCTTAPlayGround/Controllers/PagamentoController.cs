@@ -115,7 +115,7 @@ namespace ControleMesalidadeCTTAPlayGround.Controllers
             {
                 return NotFound();
             }
-            ViewData["SocioId"] = new SelectList(_context.Associados, "Id", "Id", pagamentoModel.SocioId);
+            ViewData["SocioId"] = new SelectList(_context.Associados, "Id", "Nome", pagamentoModel.SocioId);
             return View(pagamentoModel);
         }
 

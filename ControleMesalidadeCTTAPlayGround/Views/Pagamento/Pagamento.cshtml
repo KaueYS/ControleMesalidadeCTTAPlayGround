@@ -6,7 +6,7 @@
 }
 
 <h2>Registrar Pagamento para @socio?.Nome</h2>
-
+<br />
 <form asp-action="Pagamento" method="post">
     <input type="hidden" name="id" value="@socio?.Id" />
 
@@ -14,38 +14,11 @@
         <label for="valorPago">Valor do Pagamento (R$):</label>
         <input type="number" name="valorPago" class="form-control" />
     </div>
-
+    <br />
     <button type="submit" class="btn btn-success">Registrar</button>
     <a asp-action="Index" class="btn btn-secondary">Voltar</a>
 </form>
-@* <h1>Pagamento</h1>
 
-<h4>@Model.Socio.Nome</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Pagamento">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="SocioId" class="control-label"></label>
-                <select asp-for="SocioId" class ="form-control" asp-items="ViewBag.Nome"></select>
-            </div>
-            
-            <div class="form-group">
-                <label asp-for="Valor" class="control-label"></label>
-                <input asp-for="Valor" class="form-control" />
-                <span asp-validation-for="Valor" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div> *@
-
-@* <div>
-    <a asp-action="Index">Back to List</a>
-</div> *@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
